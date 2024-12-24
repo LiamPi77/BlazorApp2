@@ -1,0 +1,33 @@
+﻿@page "/FormPage"
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<h3>Simple Form with Data Binding</h3>
+
+<form @onsubmit="HandleSubmit">
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input required type="text" id="name" minlength="2" maxlength="10" class="form-control" @bind="name" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input required type="text" id="email" class="form-control" @bind="email" />
+    </div>
+
+    <p><strong>Entered Name:</strong> @name</p>
+    <p><strong>Entered Email:</strong> @email</p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+@code {
+    private string name = "Liam";
+    private string email = "Pinkus";
+
+    private void HandleSubmit()
+    {
+        // Navigate to the success page after form submission
+        Navigation.NavigateTo("/success");
+    }
+}
